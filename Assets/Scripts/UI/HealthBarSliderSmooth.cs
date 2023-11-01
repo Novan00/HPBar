@@ -31,7 +31,10 @@ public class HealthBarSliderSmooth : MonoBehaviour
     {
         while (_slider.value != _health.CurrentHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _health.CurrentHealth, _changeHealthSpeed * Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(
+            _slider.value,
+            _health.CurrentHealth,
+            _changeHealthSpeed * Time.deltaTime);
             
             yield return null;  
         }
