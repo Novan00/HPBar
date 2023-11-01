@@ -4,14 +4,7 @@ using UnityEngine.UI;
 public class HealthBarSlider : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Player _player;
-
-    private PlayerHealth _health;
-
-    private void Awake()
-    {
-        _health = _player.GetComponent<PlayerHealth>();
-    }
+    [SerializeField] private PlayerHealth _health;
 
     private void OnEnable()
     {

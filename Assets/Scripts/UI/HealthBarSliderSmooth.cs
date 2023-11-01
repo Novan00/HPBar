@@ -6,21 +6,16 @@ using UnityEngine.UI;
 public class HealthBarSliderSmooth : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerHealth _health;
 
-    private PlayerHealth _health;
     private float _changeHealthSpeed = 1f;
     private Coroutine _coroutine;
-
-    private void Awake()
-    {
-        _health = _player.GetComponent<PlayerHealth>();
-    }
 
     private void OnEnable()
     {
         _health.ChangeHealthValue += OnChangeHealthValue;
     }
+
     private void Start()
     {
         _slider.maxValue = _health.MaxHealth;

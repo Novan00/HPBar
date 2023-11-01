@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private Button _damageButton;
-    [SerializeField] private Button _healthButton;
-
     public event Action ChangeHealthValue;
 
     private int _currentHealth = 3;
@@ -14,19 +11,6 @@ public class PlayerHealth : MonoBehaviour
 
     public int CurrentHealth => _currentHealth;
     public int MaxHealth => _maxHealth;
-
-    private void OnEnable()
-    {
-        _damageButton.onClick.AddListener(TakeDamage);
-        _healthButton.onClick.AddListener(TakeHeal);
-    }
-
-
-    private void OnDisable()
-    {
-        _damageButton.onClick.RemoveListener(TakeDamage);
-        _healthButton.onClick.RemoveListener(TakeHeal);
-    }
 
     public void TakeHeal()
     {
@@ -42,6 +26,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (_currentHealth < 0)
+        {
+            _currentHealth = 0;
+        }
+
         _currentHealth--;
 
         ChangeHealthValue?.Invoke();
